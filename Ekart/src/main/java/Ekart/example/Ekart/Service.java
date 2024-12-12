@@ -47,7 +47,15 @@ public class Service {
 
     }
 
-    public void deleteProduct(Long id) {
-        repository.deleteById(id);
+   public String deleteProduct(Long id) {
+        Optional<Product> product = repository.findById(id);
+        if (product.isPresent()) {
+            // If the product exists, delete it and return success message
+            repository.delete(product.get());
+            return "Product has been successfully deleted.";
+        } else {
+            // If the product doesn't exist, return not found message
+            return "Product not found.";
+        }
     }
 }
