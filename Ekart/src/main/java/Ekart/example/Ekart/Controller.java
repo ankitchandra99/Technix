@@ -47,10 +47,10 @@ public class Controller {
         return ResponseEntity.ok(service.updateProduct(id, product));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        service.deleteProduct(id);
-        return ResponseEntity.noContent().build();
+  @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        return service.deleteProduct(id);
+
     }
 }
 
